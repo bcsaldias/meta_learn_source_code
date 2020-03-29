@@ -1,5 +1,5 @@
 ## On-the-Fly Adaptation of Source Code Models using Meta-Learning
-Disha Shrivastava, Hugo Larochelle, Danny Tarlow
+Disha Shrivastava, Hugo Larochelle, Daniel Tarlow
 
 This repository contains implementation and data for our work [On-the-Fly Adaptation of Source Code Models using Meta-Learning](). A block diagram of our approach can be found below. For more details, refer to the paper.
 
@@ -22,8 +22,8 @@ This repository contains implementation and data for our work [On-the-Fly Adapta
 * Run preprocess_data.py. This will generate files basic_dict.x and episodes_x.csv where x = train, test, val
 
 ## Repository Structure
-- Models : Directory for storing the models
-- Outputs : Directory for storing the outputs (output runs as well as hole features)
+- Models : Directory for storing the models (will be created)
+- Outputs : Directory for storing the outputs (output runs as well as hole features) (will be created)
 - Trained_Models (can be downloaded from [here](https://drive.google.com/file/d/1fzJP5qejRfVpxRAEKTY1BiyhfNC6O00T/view?usp=sharing))
 	- base_model : Trained base model
 	- tssa_fomaml : TSSA-FOMAML best model
@@ -46,7 +46,7 @@ This repository contains implementation and data for our work [On-the-Fly Adapta
 - runs.txt : Stores meta-info corresponding to each run
 
 ## Replicating results
-The trained models can be downloaded from [here](https://drive.google.com/file/d/1fzJP5qejRfVpxRAEKTY1BiyhfNC6O00T/view?usp=sharing)(Place it in the root folder).
+The trained models can be downloaded from [here](https://drive.google.com/file/d/1fzJP5qejRfVpxRAEKTY1BiyhfNC6O00T/view?usp=sharing) (Place it in the root folder).
 To replicate results in Table-2 of the paper, run the commands below:
  * Base Model: `python test.py --method base_model --comment test_base_model`
  * Dynamic Evaluation: `python test.py --method dyn_eval --inner_learning_rate 1e-3 --comment test_dyn_eval`
@@ -61,4 +61,22 @@ To meta-train with Reptile : `python meta_train.py --train_method reptile --num_
 
 To meta-train with FOMAML : `python meta_train.py --train_method reptile --num_sup_tokens 1024 --num_of_updates 14 --checkpoint_dir Models/tssa_fomaml --comment train_val_tssa_fomaml`
 
+Note: If you are training your own base model, it is better to initilize the meta-training with the trained base model to get faster convergence (this happens by deafult currently in the code)
+
 Disclaimer: In some versions of tf-nightly-gpu, you might get an error regarding the use of experimental_ref() for tqdm progress bar. In those cases just remove experimental_ref() and the script should run fine.
+
+## Citation
+
+If you use our code, please consider citing us as below:
+
+```
+@misc{shrivastava2020onthefly,
+    title={On-the-Fly Adaptation of Source Code Models using Meta-Learning},
+    author={Disha Shrivastava and Hugo Larochelle and Daniel Tarlow},
+    year={2020},
+    eprint={2003.11768},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+}
+
+```

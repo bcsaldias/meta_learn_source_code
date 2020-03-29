@@ -35,8 +35,6 @@ def get_dir_dict(data, proj_id, dir_id):
           dir_dict[token]+= 1.0
         else:
           dir_dict[token] = 1.0
-
-  #project_dict = {k: v / total for total in (sum(project_dict.values()),) for k, v in project_dict.items()}
   return dir_dict
 
 def create_file_DS(data_json_filename, ds_filename):

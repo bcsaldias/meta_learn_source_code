@@ -7,6 +7,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 from tqdm import tqdm
+from pathlib import Path
 from collections import OrderedDict
 
 
@@ -149,6 +150,11 @@ def evaluate(model, dataset, bar):
 def main():
 
   args = setup_args()
+
+  #Create Models and Outputs directory if it doesn't exist
+  Path(args.checkpoint_dir).mkdir(parents=True, exist_ok=True)
+  Path(args.out_dir).mkdir(parents=True, exist_ok=True)
+
   outfile = args.out_dir + args.comment
   f_out = open(outfile, 'w')
 

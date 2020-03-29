@@ -7,6 +7,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 from tqdm import tqdm
+from pathlib import Path
 from collections import OrderedDict
 
 #Importing from other programs
@@ -208,6 +209,11 @@ def evaluate(model, dataset, bar, inner_learning_rate, sup_batch_size, num_of_up
 def main():
 
   args = setup_args()
+
+  #Create Models and Outputs directory if it doesn't exist
+  Path(args.checkpoint_dir).mkdir(parents=True, exist_ok=True)
+  Path(args.out_dir).mkdir(parents=True, exist_ok=True)
+
   outfile = args.out_dir + args.comment
   f_out = open(outfile, 'w')
 
@@ -332,6 +338,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-'''
-Description: Script which contains all data related routines like generating episodes on the fly, loading data, creating dataset iterators, etc.
-'''

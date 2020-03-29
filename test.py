@@ -7,14 +7,13 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 from tqdm import tqdm
+from pathlib import Path
 from collections import OrderedDict
 
 #Importing from other modules
 import losses
 from model import Seq2SeqModel
 from data import getData, get_vocab_size
-
-print(tf.__version__)
 
 #change this number for running on a different GPU in multi-GPU setting
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -137,6 +136,11 @@ def evaluate(model, dataset, method, bar, inner_learning_rate, sup_batch_size, n
 def main():
 
   args = setup_args()
+
+  #Create Models and Outputs directory if it doesn't exist
+  Path(args.checkpoint_dir).mkdir(parents=True, exist_ok=True)
+  Path(args.out_dir).mkdir(parents=True, exist_ok=True)
+
   outfile = args.out_dir + args.comment
   f_out = open(outfile, 'w')
 
