@@ -61,7 +61,7 @@ To meta-train with Reptile : `python meta_train.py --train_method reptile --num_
 
 To meta-train with FOMAML : `python meta_train.py --train_method reptile --num_sup_tokens 1024 --num_of_updates 14 --checkpoint_dir Models/tssa_fomaml --comment train_val_tssa_fomaml`
 
-Note: If you are training your own base model, it is better to initilize the meta-training with the trained base model to get faster convergence (this happens by deafult currently in the code)
+Note: If you are training your own base model, it is better to initilize the meta-training with the trained base model to get faster convergence (this happens by default currently in the code)
 
 Disclaimer: In some versions of tf-nightly-gpu, you might get an error regarding the use of experimental_ref() for tqdm progress bar. In those cases just remove experimental_ref() and the script should run fine.
 
