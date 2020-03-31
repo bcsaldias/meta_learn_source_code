@@ -63,8 +63,6 @@ To meta-train with FOMAML : `python meta_train.py --train_method reptile --num_s
 
 Note: If you are training your own base model, it is better to initilize the meta-training with the trained base model to get faster convergence (this happens by deafult currently in the code)
 
-Disclaimer: In some versions of tf-nightly-gpu, you might get an error regarding the use of experimental_ref() for tqdm progress bar. In those cases just remove experimental_ref() and the script should run fine.
-
 ## Citation
 
 If you use our code, please consider citing us as below:

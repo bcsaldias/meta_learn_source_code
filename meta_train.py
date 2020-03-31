@@ -127,9 +127,9 @@ def train(model, optimizer_inner, optimizer_outer, dataset, train_method, bar, e
     token_losses.append(token_loss)
     total_batches += 1
 
-    if total_batches%10==0:
+    if total_batches % 10 == 0:
         bar.update(10)
-        postfix = OrderedDict(batch_loss={batch_token_loss.experimental_ref()})
+        postfix = OrderedDict(batch_loss = {token_loss})
         bar.set_postfix(postfix)
 
   # Calculate mean batch_wise losses
@@ -190,9 +190,9 @@ def evaluate(model, dataset, bar, inner_learning_rate, sup_batch_size, num_of_up
     hole_features[hole_identity.numpy()]=token_loss
     total_batches += 1
 
-    if total_batches%10==0:
+    if total_batches % 10 == 0:
         bar.update(10)
-        postfix = OrderedDict(batch_loss={batch_token_loss.experimental_ref()})
+        postfix = OrderedDict(batch_loss = {token_loss})
         bar.set_postfix(postfix)
 
   #For training for next epoch

@@ -91,9 +91,9 @@ def train(model, optimizer, dataset, bar):
     token_losses.append(batch_token_loss.numpy())
     total_batches += 1
 
-    if total_batches%10==0:
+    if total_batches % 10 == 0:
         bar.update(10)
-        postfix = OrderedDict(batch_loss={batch_token_loss.experimental_ref()})
+        postfix = OrderedDict(batch_loss = {batch_token_loss})
         bar.set_postfix(postfix)
 
   # Calculate mean batch_wise losses
@@ -134,9 +134,9 @@ def evaluate(model, dataset, bar):
     token_losses.append(batch_token_loss.numpy())
     total_batches += 1
 
-    if total_batches%10==0:
+    if total_batches % 10 == 0:
         bar.update(10)
-        postfix = OrderedDict(batch_loss={batch_token_loss.experimental_ref()})
+        postfix = OrderedDict(batch_loss = {batch_token_loss.numpy()})
         bar.set_postfix(postfix)
 
   # Calculate mean batch_wise losses

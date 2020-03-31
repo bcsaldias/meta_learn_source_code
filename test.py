@@ -120,9 +120,9 @@ def evaluate(model, dataset, method, bar, inner_learning_rate, sup_batch_size, n
     hole_features[hole_identity.numpy()]=token_loss
     total_batches += 1
 
-    if total_batches%10==0:
+    if total_batches % 10 == 0:
         bar.update(10)
-        postfix = OrderedDict(batch_loss={batch_token_loss.experimental_ref()})
+        postfix = OrderedDict(batch_loss = {token_loss})
         bar.set_postfix(postfix)
 
   # Calculate mean batch_wise losses
