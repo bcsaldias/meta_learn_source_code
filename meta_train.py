@@ -118,7 +118,7 @@ def train(model, optimizer_inner, optimizer_outer, dataset, train_method, bar, e
       with tf.GradientTape() as g:
         batch_token_loss, masked_loss = losses.hole_loss(model, hole_window, hole_target, seq_len_hole_target, True)
       grads = g.gradient(batch_token_loss, model.trainable_variables)
-      optimizer_outer.apply_gradients(evaluation_new.clip_gradients(zip(grads, model.trainable_variables)))
+      optimizer_outer.apply_gradients(losses.clip_gradients(zip(grads, model.trainable_variables)))
 
     batch_subword_loss = tf.reduce_mean(tf.reduce_sum(masked_loss, axis=1)/ tf.cast(seq_len_hole_target, dtype=tf.float32))
     token_loss = batch_token_loss.numpy()
